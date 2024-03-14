@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+        --section-padding: 30px;
+        }
+        body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        }
+        .container-fluid {
+        padding-right: 30px;
+        padding-left: 30px;
+        }
+        main {
+        overflow: hidden;
+        }
+        section {
+        padding-top: var(--section-padding);
+        padding-bottom: var(--section-padding);
+        position: relative;
+        }
+        #site-video {
+        .video {
+            background-color: #000;
+            padding-top: 56.65%;
+            position: relative;
+            overflow: hidden;
+        }
+        }
+        #services {
+        font-size: 86px;
+        font-size: clamp(32px, 6.29575vw, 120px);
+        line-height: 0.7;
+        text-transform: uppercase;
+
+        .container-fluid {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        
+        span {
+            white-space: nowrap;
+            margin-right: 8vw;
+        }
+        }
+    </style>
+</head>
+<body>
+    <main id="main">
+        <section id="services">
+          <div class="container-fluid">
+            <span>Service #1</span>
+            <span>Service #2</span>
+            <span>Service #3</span>
+            <span>Service #1</span>
+            <span>Service #2</span>
+            <span>Service #3</span>
+          </div>
+        </section>
+      </main>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+      <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+      <script>
+        (function ($) {
+        'use strict';
+        gsap.to("#services .container-fluid", {
+            xPercent: -100,
+            x: -innerWidth,
+            ease: "none",
+            scrollTrigger: {
+            pinnedContainer: "#main",
+            trigger: "#services",
+            markers: {startColor: "blue", endColor: "red"},
+            start: "bottom bottom",
+            end: () => innerWidth,
+            scrub: true,
+            //invalidateOnRefresh: true
+            }
+        });
+        
+        }(jQuery));
+      </script>
+</body>
+</html>
